@@ -23,12 +23,16 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ninja-build
+          cd ..
+          git clone https://github.com/bloomberg/bde-tools.git
 
       - name: Run cmake
         run: |
           mkdir build
           cd build
-          cmake .. -GNinja
+          cmake .. -GNinja -DCMAKE_MODULE_PATH=../../bde-tools/cmake/ \
+            -DCMAKE_TOOLCHAIN_FILE=../../bde-tools/cmake/toolchains/linux/gcc-default.cmake \
+            -DCMAKE_BUILD_TYPE=Debug
       - name: Run build-wrapper
         run: |
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja -C build
