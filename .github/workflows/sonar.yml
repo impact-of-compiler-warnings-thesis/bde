@@ -28,11 +28,9 @@ jobs:
 
       - name: Run cmake
         run: |
+
           mkdir build
-          cd build
-          cmake .. -GNinja -DCMAKE_MODULE_PATH=../../bde-tools/cmake/ \
-            -DCMAKE_TOOLCHAIN_FILE=../../bde-tools/cmake/toolchains/linux/gcc-default.cmake \
-            -DCMAKE_BUILD_TYPE=Debug
+          ../../bde-tools/bin/cmake_build.py configure --build_dir ./build -u dbg_mt_exc_shr
       - name: Run build-wrapper
         run: |
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja -C build
