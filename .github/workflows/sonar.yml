@@ -23,14 +23,13 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ninja-build
-          cd ..
           git clone https://github.com/bloomberg/bde-tools.git
 
       - name: Run cmake
         run: |
 
           mkdir build
-          ../../bde-tools/bin/cmake_build.py configure --build_dir ./build -u dbg_mt_exc_shr
+          ../bde-tools/bin/cmake_build.py configure --build_dir ./build -u dbg_mt_exc_shr
       - name: Run build-wrapper
         run: |
           build-wrapper-linux-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} ninja -C build
