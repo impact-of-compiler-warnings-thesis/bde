@@ -23,7 +23,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ninja-build
-
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.8"
       - name: Run cmake
         run: |
 
