@@ -1,0 +1,3 @@
+[submodule "bde-tools"]
+	path = bde-tools
+	url = https://github.com/bloomberg/bde-tools.git
