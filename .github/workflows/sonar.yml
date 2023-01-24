@@ -23,7 +23,6 @@ jobs:
         run: |
           sudo apt update
           sudo apt install ninja-build
-          git clone https://github.com/bloomberg/bde-tools.git
 
       - name: Run cmake
         run: |
